@@ -1,10 +1,21 @@
 name: Events Demo 1
 on:
   pull_request:
+    # activity types are mentioned by types
     # types: [opened, edited]
     types:
       - opened
       # - edited
+  push:
+    # filters are mentioned by induival properties
+    branches:
+      - main
+      # single * means any charcaters , other than /
+      - "dev-*" # dev-new dev-this-is-new
+      # ** means any chracters, plus ? is also included
+      - "feat/**" # feat/new feat/new/button
+    paths-ignore:
+      - ".github/workflows/*"
   workflow_dispatch:
 jobs:
   deploy:
